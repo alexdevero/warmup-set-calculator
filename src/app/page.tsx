@@ -1,5 +1,22 @@
 import { Calculator } from "@/components/Calculator/Calculator";
 import { Footer } from "@/components/Footer/Footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Warmup set calculator",
+  description: "Calculate your warmup sets",
+  openGraph: {
+    title: "Warmup set calculator",
+    description: "Calculate your warmup sets",
+    url: "https://warmup-set-calculator.vercel.app/",
+    siteName: "Warmup set calculator",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Warmup set calculator",
+    description: "Calculate your warmup sets",
+  },
+};
 
 export default function Home() {
   return (

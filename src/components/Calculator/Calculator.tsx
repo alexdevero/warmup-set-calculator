@@ -14,7 +14,7 @@ export const Calculator: FC = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-5">
         <div className="flex items-center gap-2">
           <label htmlFor="weight">Working set weight:</label>
           <div className="flex">
@@ -36,16 +36,22 @@ export const Calculator: FC = () => {
           </div>
         </div>
 
-        <label htmlFor="isCompound" className="flex items-center gap-2">
-          <input
-            id="isCompound"
-            name="isCompound"
-            type="checkbox"
-            checked={isCompoundExercise}
-            onChange={(e) => setIsCompoundExercise(e.target.checked)}
-          />
-          Is compound exercise
-        </label>
+        <div className="flex flex-col gap-1">
+          <label htmlFor="isCompound" className="flex items-center gap-2">
+            <input
+              id="isCompound"
+              name="isCompound"
+              type="checkbox"
+              checked={isCompoundExercise}
+              onChange={(e) => setIsCompoundExercise(e.target.checked)}
+            />
+            Is compound exercise
+          </label>
+
+          <span className="text-sm text-gray-500">
+            Leave it unchecked for isolation exercises.
+          </span>
+        </div>
 
         <button
           className="rounded-md bg-blue-500 text-white px-4 py-2 hover:bg-blue-600 cursor-pointer transition-colors disabled:opacity-50 disabled:bg-gray-500 disabled:hover:bg-gray-500 disabled:cursor-not-allowed text-sm font-bold"
@@ -56,10 +62,12 @@ export const Calculator: FC = () => {
         </button>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 w-full">
         <h2 className="text-lg font-bold">Warmup sets</h2>
 
-        {warmupSets.length === 0 && <p>No warmup sets calculated</p>}
+        {warmupSets.length === 0 && (
+          <p className="text-gray-500">No warmup sets calculated</p>
+        )}
 
         <div className="flex flex-col gap-2">
           {warmupSets.map((set, index) => (
