@@ -4,7 +4,7 @@ import { useWarmupSetCalculator } from "@/hooks/useWarmupSetCalculator";
 import { type FC, useState } from "react";
 
 export const Calculator: FC = () => {
-  const [workingSetWeight, setWorkingSetWeight] = useState(0);
+  const [workingSetWeight, setWorkingSetWeight] = useState("");
   const [isCompoundExercise, setIsCompoundExercise] = useState(false);
 
   const { warmupSets, handleCalculation } = useWarmupSetCalculator(
@@ -24,8 +24,9 @@ export const Calculator: FC = () => {
               type="number"
               className="border-l border-y border-gray-300 rounded-bl-md rounded-tl-md p-2 text-sm h-full"
               step={0.05}
+              min={0}
               value={workingSetWeight}
-              onChange={(e) => setWorkingSetWeight(Number(e.target.value))}
+              onChange={(e) => setWorkingSetWeight(e.target.value)}
             />
             <div className="text-sm border border-gray-300 border-l-gray-500 rounded-br-md rounded-tr-md flex items-center px-2 cursor-default select-none">
               kg
@@ -46,7 +47,7 @@ export const Calculator: FC = () => {
 
         <button
           className="rounded-md bg-blue-500 text-white px-4 py-2 hover:bg-blue-600 cursor-pointer transition-colors disabled:opacity-50 disabled:bg-gray-500 disabled:hover:bg-gray-500 disabled:cursor-not-allowed text-sm font-bold"
-          disabled={workingSetWeight === 0}
+          disabled={workingSetWeight === ""}
           onClick={handleCalculation}
         >
           Calculate

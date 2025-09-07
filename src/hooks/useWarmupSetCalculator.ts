@@ -7,12 +7,18 @@ type WarmupSet = {
 };
 
 export const useWarmupSetCalculator = (
-  workingSetWeight: number,
+  workingSetWeight: string,
   isCompoundExercise: boolean
 ) => {
   const [warmupSets, setWarmupSets] = useState<WarmupSet[]>([]);
 
   const handleCalculation = () => {
+    const workingSetWeightNumber = Number(workingSetWeight);
+
+    if (isNaN(workingSetWeightNumber)) {
+      return;
+    }
+
     if (isCompoundExercise) {
       // Compound exercise:
       // * Set 1 → 40% of W × 8–10 reps
@@ -26,22 +32,22 @@ export const useWarmupSetCalculator = (
           percentage: 0.0,
         },
         {
-          weight: (workingSetWeight * 0.4).toFixed(2),
+          weight: (workingSetWeightNumber * 0.4).toFixed(2),
           reps: "8-10",
           percentage: 0.4,
         },
         {
-          weight: (workingSetWeight * 0.6).toFixed(2),
+          weight: (workingSetWeightNumber * 0.6).toFixed(2),
           reps: "5-6",
           percentage: 0.6,
         },
         {
-          weight: (workingSetWeight * 0.75).toFixed(2),
+          weight: (workingSetWeightNumber * 0.75).toFixed(2),
           reps: "3-4",
           percentage: 0.75,
         },
         {
-          weight: (workingSetWeight * 0.9).toFixed(2),
+          weight: (workingSetWeightNumber * 0.9).toFixed(2),
           reps: "1-2",
           percentage: 0.9,
         },
@@ -52,12 +58,12 @@ export const useWarmupSetCalculator = (
       // * Set 2 → 70% of W × 6–8 reps
       setWarmupSets([
         {
-          weight: (workingSetWeight * 0.5).toFixed(2),
+          weight: (workingSetWeightNumber * 0.5).toFixed(2),
           reps: "10-12",
           percentage: 0.5,
         },
         {
-          weight: (workingSetWeight * 0.7).toFixed(2),
+          weight: (workingSetWeightNumber * 0.7).toFixed(2),
           reps: "6-8",
           percentage: 0.7,
         },
