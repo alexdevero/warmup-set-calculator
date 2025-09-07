@@ -25,6 +25,8 @@ export const Calculator: FC = () => {
               className="border-l border-y border-gray-300 rounded-bl-md rounded-tl-md p-2 text-sm h-full"
               step={0.05}
               min={0}
+              pattern="[0-9]*"
+              placeholder="Weight..."
               value={workingSetWeight}
               onChange={(e) => setWorkingSetWeight(e.target.value)}
             />
